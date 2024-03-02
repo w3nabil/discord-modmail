@@ -1,0 +1,5 @@
+{
+    "server_id" : YOUR_SERVER_ID, 
+    "mod_channel_id" : CHANNEL_WHERE_YOU_WANT_TO_RECIEVE_MESSAGES,
+    "mod_role_id" : MODERATOR_ROLE
+}
