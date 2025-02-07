@@ -1,31 +1,87 @@
-# Discord Basic Modmail 
+# Discord Mod Mail Bot
 
-# About Basic Modmail 
-This project is a Discord bot that performs modmail tasks. It listens to messages in a server and sends notifications to a designated moderation channel. It also allows moderators to reply to messages and send direct messages to users.
+A Discord bot built with Python and `discord.py`, designed for handling direct messages, and enabling moderators to reply to users through a dedicated channel.
 
-# Installation
-1. Clone the repository: `git clone https://github.com/w3nabil/discord-modmail.git`
-2. Install the required dependencies: `pip install -r requirements.txt`
-3. Create a `.env` file in the root directory and add the following variables:
-    - `BOT_TOKEN`: Your Discord bot token
-4. Update the `config.json` file with the necessary server and channel IDs.
-5. Run the bot: `python app.py`
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3.8.x-green?style=for-the-badge&logo=python" alt="Python Version 3.8.x">
+  <img src="https://img.shields.io/badge/DiscordPy-2.3.2-green?style=for-the-badge&logo=python" alt="DiscordPy Version 2.3.2">
+  <img src="https://img.shields.io/github/license/w3nabil/discord-modmail?style=for-the-badge&logo=github&label=License" alt="License">
+</div>
 
-# Usage
-- Once the bot is running, it will listen to messages in the specified server and channel.
-- When a message is received, it will check if it's a direct message or from the server.
-- If it's a direct message, it will send a notification to the moderation channel with the message content and author details.
-- If it's a message from the server, it will check if the message starts with the command "reply".
-  - If it does, and the message is from the moderation channel and sent by a moderator, it will send a direct message to the specified user with the provided reply.
-  - It will also send a confirmation message in the moderation channel with the reply details.
-- The bot will continue running until terminated manually.
+## Features
 
-# Contributing
-- Fork the repository.
-- Create a new branch: `git checkout -b my-feature`
-- Make your changes and commit them: `git commit -m "Add my feature"`
-- Push to the branch: `git push origin my-feature`
-- Submit a pull request.
+- Listens for direct messages and forwards them to a moderation channel.
+- Allows moderators to reply to users from a specific channel.
 
-# License
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+## Installation
+
+### Prerequisites
+- Python 3.8+
+- `discord.py` library
+- `python-dotenv` for environment variable management
+- `json` for configuration management
+
+### Setup
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/w3nabil/discord-modmail.git
+   cd discord-modmail
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+3. **Set up environment variables:**
+   - Rename `.env.EXAMPLE` to `.env` in the project root and add the following:
+     ```ini
+     BOT_TOKEN=your_discord_bot_token
+     ```
+     - [Learn more about Discord Bot Token](https://discord.com/developers)
+
+4. **Configure `config.json`:**
+   - Modify the `config.json` file in the project root and structure it like this:
+     ```json
+     {
+       "server_id": 123456789012345678, // This is your SERVER ID
+       "mod_channel_id": 123456789012345678, // This is the channel where dms messages will be forwarded
+       "mod_role_id": 123456789012345678 // Moderator Role, so that they can send messages
+     }
+     ```
+
+5. **Run the bot:**
+   ```sh
+   python bot.py
+   ```
+
+## Usage
+
+- **Listening to DMs:** Any DM sent to the bot will be forwarded to the moderation channel.
+- **Moderator Replies:** Mods can reply using:
+  ```sh
+  reply <user_id> <message>
+  ```
+- **Bot Presence:** The bot will display "Listening to People!" as its status.
+
+## Error Handling
+- If `config.json` is missing or has incorrect values, the bot will print an error message and exit.
+- If the bot lacks permissions to message a user, it will notify the moderator in the channel.
+
+## Limitations 
+- Uses lower python and discord.py version (Maybe it will be outdated soon).
+- Things need to be monitored manually, for example, you need to find the text. 
+- Not good for servers which planning to serve 20+ users using my modmail.
+- Poor Error handling, and I did not effort much for this project. 
+- Can not send direct images, use image cdn instead with vanity.  
+
+## License
+This project is licensed under the MIT License. See [LICENSE](License) for details.
+
+## Contact
+For questions, feedback, or collaboration opportunities, feel free to reach out at w3nabil@gmail.com.
+
+---
+
+
+
